@@ -37,6 +37,6 @@ arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
 
 # topo = Topo()
 # topo.logo(arquivo_logo)
-# topo.titulos('Unimed Noroeste Capixaba', 'Senso Hospitalar', 'Ocupação Diária dos Leitos')
+topo.titulos('Unimed Noroeste Capixaba', 'Senso Hospitalar', 'Ocupação Diária dos Leitos')
 
 app.mainloop()
