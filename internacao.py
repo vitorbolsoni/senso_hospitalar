@@ -2,7 +2,7 @@ import tkinter as tk
 
 
 class App(tk.Frame):
-    def __init__(self, master):
+    def __init__(self, master=None):
         super().__init__(master)
         self.pack()
 
@@ -58,9 +58,7 @@ Alta Para Amanhã''', foreground='#009')
         ind_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=2)
 
 
-janela = tk.Tk()
-
-app = App(janela)
+app = App()
 fundo = Fundo(app)
 topo = Topo(fundo)
 arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
