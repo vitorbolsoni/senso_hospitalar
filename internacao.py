@@ -21,9 +21,9 @@ class Janela(tk.Frame):
         self.pack()
 
     def fundo(self):
-        self.config(background='#EB4E1C')
+        self.config(background='#6DA0FA')
 
-    def titulos(self, nome_instituicao, descricao_titulo, texto_cabecalho, py=2, bg='#dde'):
+    def titulos(self, nome_instituicao, descricao_titulo, texto_cabecalho, py=2, bg='#6DA0FA'):
         instituicao = tk.Label(self, text=nome_instituicao, foreground='#009', background=bg)
         instituicao.pack(side='top', anchor='center', fill='none', padx=2, pady=py)
         titulo = tk.Label(self, text=descricao_titulo, font=('Copperplate', 14), foreground='#009', background=bg)
@@ -31,7 +31,7 @@ class Janela(tk.Frame):
         cabecalho = tk.Label(self, text=texto_cabecalho, font=('Copperplate', 11), foreground='#009', background=bg)
         cabecalho.pack(side='top', anchor='center', fill='none', padx=2, pady=py)
 
-    def logo(self, arquivo, py=2, bg='#dde'):
+    def logo(self, arquivo, py=2, bg='#6DA0FA'):
         logo = tk.Label(self, image=arquivo, background=bg)
         logo.pack(side='left', anchor='nw', fill='none', padx=2, pady=py)
 
@@ -39,22 +39,22 @@ class Janela(tk.Frame):
         status = tk.Label(self, text='teste status', background=bg)
         status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
 
-    def tabela(self, py=20, cor_letra='#009'):
-        indice_setor = tk.Label(self, text='Setores', foreground=cor_letra)
+    def tabela(self, py=20, cor_letra='#009', bg='#6DA0FA'):
+        indice_setor = tk.Label(self, text='Setores', foreground=cor_letra, background=bg)
         indice_setor.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        indice_leitos = tk.Label(self, text='Total de Leitos', foreground=cor_letra)
+        indice_leitos = tk.Label(self, text='Total de Leitos', foreground=cor_letra, background=bg)
         indice_leitos.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        indice_ocupacao = tk.Label(self, text='Ocupação', foreground=cor_letra)
+        indice_ocupacao = tk.Label(self, text='Ocupação', foreground=cor_letra, background=bg)
         indice_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        indice_perc_ocupacao = tk.Label(self, text='% Ocupação', foreground=cor_letra)
+        indice_perc_ocupacao = tk.Label(self, text='% Ocupação', foreground=cor_letra, background=bg)
         indice_perc_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
         indice_altastransf = tk.Label(self, text='''Altas ou
-Transferências Internas''', foreground=cor_letra)
+Transferências Internas''', foreground=cor_letra, background=bg)
         indice_altastransf.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
         indice_prev_alta = tk.Label(self, text='''Previsão de
-Alta Para Amanhã''', foreground=cor_letra)
+Alta Para Amanhã''', foreground=cor_letra, background=bg)
         indice_prev_alta.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        indice_obito = tk.Label(self, text='Óbitos', foreground=cor_letra)
+        indice_obito = tk.Label(self, text='Óbitos', foreground=cor_letra, background=bg)
         indice_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
 
     def fechar(self, root, px=5, py=5):
