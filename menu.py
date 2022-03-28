@@ -34,10 +34,16 @@ class JanelaMenu(tk.Frame):
         uti = tk.Button(self, text="UTI's", command=abre_janela_uti)
         uti.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
 
+    def fechar(self, root, px=5, py=5):
+        botao = tk.Button(self, text='Fechar', command=root.destroy)
+        botao.pack(side='bottom', anchor='se', fill='none', padx=px, pady=py)
 
-menu = JanelaMenu()
+
+root = tk.Tk()
+menu = JanelaMenu(root)
 
 menu.fundo()
+menu.fechar(root)
 menu.botoes()
 arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
 menu.logo(arquivo_logo)

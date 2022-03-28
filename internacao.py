@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-class JanelaInternacao(tk.Frame):
+class Janela(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.pack()
@@ -44,11 +44,16 @@ Alta Para Amanhã''', foreground=cor_letra)
         ind_obito = tk.Label(self, text='Óbitos', foreground=cor_letra)
         ind_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
 
+    def fechar(self, root, px=5, py=5):
+        botao = tk.Button(self, text='Fechar', command=root.destroy)
+        botao.pack(side='bottom', anchor='se', fill='none', padx=px, pady=py)
+
 
 def abre_janela_internacao():
     root = tk.Toplevel()
-    internacao = JanelaInternacao(root)
+    internacao = Janela(root)
     internacao.fundo()
+    internacao.fechar(root)
     arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
     internacao.logo(arquivo_logo)
     internacao.status()
