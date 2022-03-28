@@ -1,5 +1,6 @@
 import tkinter as tk
 from internacao import abre_janela_internacao
+from uti import abre_janela_uti
 
 
 class JanelaMenu(tk.Frame):
@@ -30,6 +31,8 @@ class JanelaMenu(tk.Frame):
     def botoes(self, px=35, py=5):
         internacao = tk.Button(self, text='Internação', command=abre_janela_internacao)
         internacao.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
+        uti = tk.Button(self, text="UTI's", command=abre_janela_uti)
+        uti.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
 
 
 menu = JanelaMenu()

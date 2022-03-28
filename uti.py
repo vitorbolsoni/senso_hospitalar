@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-class JanelaInternacao(tk.Frame):
+class JanelaUti(tk.Frame):
     def __init__(self, master):
         super().__init__(master)
         self.pack()
@@ -45,13 +45,13 @@ Alta Para Amanhã''', foreground=cor_letra)
         ind_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
 
 
-def abre_janela_internacao():
+def abre_janela_uti():
     root = tk.Toplevel()
-    internacao = JanelaInternacao(root)
-    internacao.fundo()
+    uti = JanelaUti(root)
+    uti.fundo()
     arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
-    internacao.logo(arquivo_logo)
-    internacao.status()
-    internacao.titulos('Unimed Noroeste Capixaba', 'Senso Hospitalar', 'Ocupação Diária Internação')
-    internacao.tabela()
+    uti.logo(arquivo_logo)
+    uti.status()
+    uti.titulos('Unimed Noroeste Capixaba', 'Senso Hospitalar', "Ocupação Diária UTI's")
+    uti.tabela()
     root.mainloop()
