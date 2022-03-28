@@ -8,9 +8,8 @@ class JanelaMenu(tk.Frame):
         super().__init__(master)
         self.pack()
 
-    def fundo(self, bg='#EB4E1C'):
-        fundo = tk.Frame(self, borderwidth=2, background=bg)
-        fundo.place(width=1000, height=1000)
+    def fundo(self):
+        self.config(background='#EB4E1C')
 
     def titulos(self, nome_instituicao, descricao_titulo, texto_cabecalho, px=2, py=2, bg='#dde'):
         instituicao = tk.Label(self, text=nome_instituicao, foreground='#009', background=bg)

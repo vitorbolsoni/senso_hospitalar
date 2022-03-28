@@ -2,13 +2,26 @@ import tkinter as tk
 
 
 class Janela(tk.Frame):
-    def __init__(self, master):
+    def __init__(self, master, setor, leitos, ocupacao, perc_ocupacao, altas_transf, prev_alta, obitos):
         super().__init__(master)
+        self.setor = tk.Label(self, text=setor, foreground='#255')
+        self.setor.place(x=125, y=150)
+        self.leitos = tk.Label(self, text=leitos, foreground='#255')
+        self.leitos.place(x=210, y=150)
+        self.ocupacao = tk.Label(self, text=ocupacao, foreground='#255')
+        self.ocupacao.place(x=285, y=150)
+        self.perc_ocupacao = tk.Label(self, text=perc_ocupacao, foreground='#255')
+        self.perc_ocupacao.place(x=360, y=150)
+        self.altas_transf = tk.Label(self, text=altas_transf, foreground='#255')
+        self.altas_transf.place(x=465, y=150)
+        self.prev_alta = tk.Label(self, text=prev_alta, foreground='#255')
+        self.prev_alta.place(x=585, y=150)
+        self.obito = tk.Label(self, text=obitos, foreground='#255')
+        self.obito.place(x=660, y=150)
         self.pack()
 
-    def fundo(self, bg='#EB4E1C'):
-        fundo = tk.Frame(self, borderwidth=2, background=bg)
-        fundo.place(width=1000, height=1000)
+    def fundo(self):
+        self.config(background='#EB4E1C')
 
     def titulos(self, nome_instituicao, descricao_titulo, texto_cabecalho, py=2, bg='#dde'):
         instituicao = tk.Label(self, text=nome_instituicao, foreground='#009', background=bg)
@@ -27,22 +40,22 @@ class Janela(tk.Frame):
         status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
 
     def tabela(self, py=20, cor_letra='#009'):
-        ind_setor = tk.Label(self, text='Setores', foreground=cor_letra)
-        ind_setor.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_leitos = tk.Label(self, text='Total de Leitos', foreground=cor_letra)
-        ind_leitos.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_ocupacao = tk.Label(self, text='Ocupação', foreground=cor_letra)
-        ind_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_perc_ocupacao = tk.Label(self, text='% Ocupação', foreground=cor_letra)
-        ind_perc_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_altastransf = tk.Label(self, text='''Altas ou
+        indice_setor = tk.Label(self, text='Setores', foreground=cor_letra)
+        indice_setor.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_leitos = tk.Label(self, text='Total de Leitos', foreground=cor_letra)
+        indice_leitos.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_ocupacao = tk.Label(self, text='Ocupação', foreground=cor_letra)
+        indice_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_perc_ocupacao = tk.Label(self, text='% Ocupação', foreground=cor_letra)
+        indice_perc_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_altastransf = tk.Label(self, text='''Altas ou
 Transferências Internas''', foreground=cor_letra)
-        ind_altastransf.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_prev_alta = tk.Label(self, text='''Previsão de
+        indice_altastransf.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_prev_alta = tk.Label(self, text='''Previsão de
 Alta Para Amanhã''', foreground=cor_letra)
-        ind_prev_alta.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_obito = tk.Label(self, text='Óbitos', foreground=cor_letra)
-        ind_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_prev_alta.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        indice_obito = tk.Label(self, text='Óbitos', foreground=cor_letra)
+        indice_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
 
     def fechar(self, root, px=5, py=5):
         botao = tk.Button(self, text='Fechar', command=root.destroy)
@@ -51,7 +64,7 @@ Alta Para Amanhã''', foreground=cor_letra)
 
 def abre_janela_internacao():
     root = tk.Toplevel()
-    internacao = Janela(root)
+    internacao = Janela(root, 'Clinica 1º', 50, 45, 90, 2, 3, 1)
     internacao.fundo()
     internacao.fechar(root)
     arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
