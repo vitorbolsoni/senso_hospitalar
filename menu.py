@@ -1,6 +1,6 @@
 import tkinter as tk
 from internacao import JanelaInternacao
-from uti import abre_janela_uti
+from uti import JanelaUti
 
 
 class JanelaMenu:
@@ -21,7 +21,7 @@ class JanelaMenu:
 
         self.internacao = tk.Button(self.fundo, text='Internação', command=JanelaInternacao)
         self.internacao.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
-        self.uti = tk.Button(self.fundo, text="UTI's", command=abre_janela_uti)
+        self.uti = tk.Button(self.fundo, text="UTI's", command=JanelaUti)
         self.uti.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
 
         arquivo_logo = tk.PhotoImage(file='logo_unimed.png')

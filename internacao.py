@@ -7,7 +7,7 @@ class JanelaInternacao:
         self.janela.focus_force()
         self.janela.grab_set()
         self.janela.iconbitmap(tk.PhotoImage('unimed.ico'))
-        self.janela.title('Senso Hospitalar')
+        self.janela.title('Senso Hospitalar - Internação')
         self.fundo = tk.Frame(self.janela, background='#EB4E1C')
         self.fundo.pack()
 
@@ -40,6 +40,12 @@ class JanelaInternacao:
 
         self.status = tk.Label(self.fundo, text='teste status', background=bg)
         self.status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
+
+        self.titulo = tk.Label(self.fundo, text='Senso Hospitalar', font=('Copperplate', 14), foreground=fg, background=bg)
+        self.titulo.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
+
+        self.cabecalho = tk.Label(self.fundo, text='Internação', font=('Copperplate', 11), foreground=fg, background=bg)
+        self.cabecalho.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
 
         self.indice_setor = tk.Label(self.fundo, text='Setores', foreground=fg)
         self.indice_setor.pack(side='left', anchor='n', fill='none', padx=2, pady=py)

@@ -1,57 +1,67 @@
 import tkinter as tk
 
 
-class JanelaUti(tk.Frame):
-    def __init__(self, master):
-        super().__init__(master)
-        self.pack()
+class JanelaUti:
+    def __init__(self):
+        self.janela = tk.Toplevel()
+        self.janela.focus_force()
+        self.janela.grab_set()
+        self.janela.iconbitmap(tk.PhotoImage('unimed.ico'))
+        self.janela.title("Senso Hospitalar - UTI's")
+        self.fundo = tk.Frame(self.janela, background='#EB4E1C')
+        self.fundo.pack()
 
-    def fundo(self, bg='#EB4E1C'):
-        fundo = tk.Frame(self, borderwidth=2, background=bg)
-        fundo.place(width=1000, height=1000)
+        px = 2
+        py = 2
+        fg = '#009'
+        bg = '#dde'
 
-    def titulos(self, nome_instituicao, descricao_titulo, texto_cabecalho, py=2, bg='#dde'):
-        instituicao = tk.Label(self, text=nome_instituicao, foreground='#009', background=bg)
-        instituicao.pack(side='top', anchor='center', fill='none', padx=2, pady=py)
-        titulo = tk.Label(self, text=descricao_titulo, font=('Copperplate', 14), foreground='#009', background=bg)
-        titulo.pack(side='top', anchor='center', fill='none', padx=2, pady=py)
-        cabecalho = tk.Label(self, text=texto_cabecalho, font=('Copperplate', 11), foreground='#009', background=bg)
-        cabecalho.pack(side='top', anchor='center', fill='none', padx=2, pady=py)
+        # self.setor = tk.Label(self.fundo, text=setor, foreground='#255')
+        # self.setor.place(x=125, y=150)
+        # self.leitos = tk.Label(self.fundo, text=leitos, foreground='#255')
+        # self.leitos.place(x=210, y=150)
+        # self.ocupacao = tk.Label(self.fundo, text=ocupacao, foreground='#255')
+        # self.ocupacao.place(x=285, y=150)
+        # self.perc_ocupacao = tk.Label(self.fundo, text=perc_ocupacao, foreground='#255')
+        # self.perc_ocupacao.place(x=360, y=150)
+        # self.altas_transf = tk.Label(self.fundo, text=altas_transf, foreground='#255')
+        # self.altas_transf.place(x=465, y=150)
+        # self.prev_alta = tk.Label(self.fundo, text=prev_alta, foreground='#255')
+        # self.prev_alta.place(x=585, y=150)
+        # self.obito = tk.Label(self.fundo, text=obitos, foreground='#255')
+        # self.obito.place(x=660, y=150)
 
-    def logo(self, arquivo, py=2, bg='#dde'):
-        logo = tk.Label(self, image=arquivo, background=bg)
-        logo.pack(side='left', anchor='nw', fill='none', padx=2, pady=py)
+        self.fechar = tk.Button(self.fundo, text='Fechar', command=self.janela.destroy)
+        self.fechar.pack(side='bottom', anchor='se', fill='none', padx=px, pady=py)
 
-    def status(self, bg='#dde'):
-        status = tk.Label(self, text='teste status', background=bg)
-        status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
+        arquivo_logo = tk.PhotoImage(file='logo_unimed.png')
+        self.logo = tk.Label(self.fundo, image=arquivo_logo, background=bg)
+        self.logo.pack(side='left', anchor='nw', fill='none', padx=2, pady=py)
 
-    def tabela(self, py=20, cor_letra='#009'):
-        ind_setor = tk.Label(self, text='Setores', foreground=cor_letra)
-        ind_setor.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_leitos = tk.Label(self, text='Total de Leitos', foreground=cor_letra)
-        ind_leitos.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_ocupacao = tk.Label(self, text='Ocupação', foreground=cor_letra)
-        ind_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_perc_ocupacao = tk.Label(self, text='% Ocupação', foreground=cor_letra)
-        ind_perc_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_altastransf = tk.Label(self, text='''Altas ou
-Transferências Internas''', foreground=cor_letra)
-        ind_altastransf.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_prev_alta = tk.Label(self, text='''Previsão de
-Alta Para Amanhã''', foreground=cor_letra)
-        ind_prev_alta.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
-        ind_obito = tk.Label(self, text='Óbitos', foreground=cor_letra)
-        ind_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.status = tk.Label(self.fundo, text='teste status', background=bg)
+        self.status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
 
+        self.titulo = tk.Label(self.fundo, text='Senso Hospitalar', font=('Copperplate', 14), foreground=fg, background=bg)
+        self.titulo.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
 
-def abre_janela_uti():
-    root = tk.Toplevel()
-    uti = JanelaUti(root)
-    uti.fundo()
-    arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
-    uti.logo(arquivo_logo)
-    uti.status()
-    uti.titulos('Unimed Noroeste Capixaba', 'Senso Hospitalar', "Ocupação Diária UTI's")
-    uti.tabela()
-    root.mainloop()
+        self.cabecalho = tk.Label(self.fundo, text="UTI's", font=('Copperplate', 11), foreground=fg, background=bg)
+        self.cabecalho.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
+
+        self.indice_setor = tk.Label(self.fundo, text='Setores', foreground=fg)
+        self.indice_setor.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.indice_leitos = tk.Label(self.fundo, text='Total de Leitos', foreground=fg)
+        self.indice_leitos.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.indice_ocupacao = tk.Label(self.fundo, text='Ocupação', foreground=fg)
+        self.indice_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.indice_perc_ocupacao = tk.Label(self.fundo, text='% Ocupação', foreground=fg)
+        self.indice_perc_ocupacao.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.indice_altastransf = tk.Label(self.fundo, text='''Altas ou
+Transferências Internas''', foreground=fg)
+        self.indice_altastransf.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.indice_prev_alta = tk.Label(self.fundo, text='''Previsão de
+Alta Para Amanhã''', foreground=fg)
+        self.indice_prev_alta.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+        self.indice_obito = tk.Label(self.fundo, text='Óbitos', foreground=fg)
+        self.indice_obito.pack(side='left', anchor='n', fill='none', padx=2, pady=py)
+
+        self.janela.mainloop()
