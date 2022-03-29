@@ -3,7 +3,7 @@ from internacao import JanelaInternacao
 from uti import abre_janela_uti
 
 
-class JanelaMenu:
+class Janela:
     def __init__(self):
         self.janela = tk.Tk()
         self.janela.iconbitmap(tk.PhotoImage('unimed.ico'))
@@ -41,6 +41,3 @@ class JanelaMenu:
         self.cabecalho.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
 
         self.janela.mainloop()
-
-
-menu = JanelaMenu()
