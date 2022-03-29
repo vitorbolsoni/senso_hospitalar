@@ -1,52 +1,46 @@
 import tkinter as tk
-from internacao import abre_janela_internacao
+from internacao import JanelaInternacao
 from uti import abre_janela_uti
 
 
-class JanelaMenu(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.pack()
+class JanelaMenu:
+    def __init__(self):
+        self.janela = tk.Tk()
+        self.janela.iconbitmap(tk.PhotoImage('unimed.ico'))
+        self.janela.title('Senso Hospitalar')
+        self.fundo = tk.Frame(self.janela, background='#EB4E1C')
+        self.fundo.pack()
 
-    def fundo(self):
-        self.config(background='#EB4E1C')
+        px = 2
+        py = 2
+        fg = '#009'
+        bg = '#dde'
 
-    def titulos(self, nome_instituicao, descricao_titulo, texto_cabecalho, px=2, py=2, bg='#dde'):
-        instituicao = tk.Label(self, text=nome_instituicao, foreground='#009', background=bg)
-        instituicao.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
-        titulo = tk.Label(self, text=descricao_titulo, font=('Copperplate', 14), foreground='#009', background=bg)
-        titulo.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
-        cabecalho = tk.Label(self, text=texto_cabecalho, font=('Copperplate', 11), foreground='#009', background=bg)
-        cabecalho.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
+        self.fechar = tk.Button(self.fundo, text='Sair', command=self.janela.destroy)
+        self.fechar.pack(side='bottom', anchor='se', fill='none', padx=px, pady=py)
 
-    def logo(self, arquivo, px=5, py=2, bg='#dde'):
-        logo = tk.Label(self, image=arquivo, background=bg)
-        logo.pack(side='left', anchor='nw', fill='none', padx=px, pady=py)
+        self.internacao = tk.Button(self.fundo, text='Internação', command=JanelaInternacao)
+        self.internacao.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
+        self.uti = tk.Button(self.fundo, text="UTI's", command=abre_janela_uti)
+        self.uti.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
 
-    def status(self, bg='#dde'):
-        status = tk.Label(self, text='teste status', background=bg)
-        status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
+        arquivo_logo = tk.PhotoImage(file='logo_unimed.png')
+        self.logo = tk.Label(self.fundo, image=arquivo_logo, background=bg)
+        self.logo.pack(side='left', anchor='nw', padx=px, pady=py)
 
-    def botoes(self, px=35, py=5):
-        internacao = tk.Button(self, text='Internação', command=abre_janela_internacao)
-        internacao.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
-        uti = tk.Button(self, text="UTI's", command=abre_janela_uti)
-        uti.pack(side='bottom', anchor='sw', fill='none', padx=px, pady=py)
+        self.status = tk.Label(self.fundo, text='teste status', background=bg)
+        self.status.pack(side='right', anchor='ne', fill='none', padx=2, pady=2)
 
-    def fechar(self, px=5, py=5):
-        botao = tk.Button(self, text='Sair', command=root.destroy)
-        botao.pack(side='bottom', anchor='se', fill='none', padx=px, pady=py)
+        self.instituicao = tk.Label(self.fundo, text='Unimed Noroeste Capixaba', foreground=fg, background=bg)
+        self.instituicao.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
+
+        self.titulo = tk.Label(self.fundo, text='Senso Hospitalar', font=('Copperplate', 14), foreground=fg, background=bg)
+        self.titulo.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
+
+        self.cabecalho = tk.Label(self.fundo, text='Menu Principal', font=('Copperplate', 11), foreground=fg, background=bg)
+        self.cabecalho.pack(side='top', anchor='center', fill='none', padx=px, pady=py)
+
+        self.janela.mainloop()
 
 
-root = tk.Tk()
-menu = JanelaMenu(root)
-
-menu.fundo()
-menu.fechar()
-menu.botoes()
-arquivo_logo = tk.PhotoImage(file='logo_unimed_init.png')
-menu.logo(arquivo_logo)
-menu.status()
-menu.titulos('Unimed Noroeste Capixaba', 'Senso Hospitalar', 'Ocupação Diária dos Leitos')
-
-menu.mainloop()
+menu = JanelaMenu()
